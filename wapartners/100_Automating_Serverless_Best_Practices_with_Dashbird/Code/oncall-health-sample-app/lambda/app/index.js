@@ -29,16 +29,16 @@ const fleet = [
 ];
 
 exports.handler = (event, context, callback) => {
-    console.log("See this event:",event);
-    console.log("See this context:",context);
-    console.log("See this callback:",callback);
+    //console.log("See this event:",event);
+    //console.log("See this context:",context);
+    //console.log("See this callback:",callback);
     if (!event.requestContext.authorizer) {
       errorResponse('Authorization not configured', context.awsRequestId, callback);
       return;
     }
 
     const rideId = toUrlString(randomBytes(16));
-    console.log('Received event (', rideId, '): ', event);
+    //console.log('Received event (', rideId, '): ', event);
     const username = event.requestContext.authorizer.claims['cognito:username'];
     const requestBody = JSON.parse(event.body);
 
@@ -67,7 +67,7 @@ exports.handler = (event, context, callback) => {
 };
 
 function findCarunit(pickupLocation) {
-    console.log('Finding carunit for ', pickupLocation.Latitude, ', ', pickupLocation.Longitude);
+    //console.log('Finding carunit for ', pickupLocation.Latitude, ', ', pickupLocation.Longitude);
     return fleet[Math.floor(Math.random() * fleet.length)];
 }
 
