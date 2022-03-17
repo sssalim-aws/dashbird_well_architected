@@ -57,7 +57,7 @@ exports.handler = (event, context, callback) => {
                 Rider: username,
             }),
             headers: {
-                'Access-Control-Allow-Origin': '*',
+                'access-control-allow-origin': process.env.APP_URL ,
             },
         });
     }).catch((err) => {
